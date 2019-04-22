@@ -17,6 +17,7 @@ public class UserEventHandler {
     PrivilegeRepository privilegeRepository;
 
     // 왜 안되냐ㅠㅠ
+    // TODO : 유저정보 입력 > 권한 정보 삽입 > 역할 삽입 > 유저정보 저장
     @HandleBeforeCreate
     public void handleUserEntityBeforeCreate(UserEntity user) {
         List<RoleEntity> defaultRoles = new ArrayList<RoleEntity>();

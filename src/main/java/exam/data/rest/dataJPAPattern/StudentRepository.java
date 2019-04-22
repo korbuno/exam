@@ -4,11 +4,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@Repository
+@RepositoryRestResource(collectionResourceRel = "student", path = "student")
 @Api(tags = "Spring Data JPA Pattern")
 public interface StudentRepository extends JpaRepository<StudentEntity, Integer> {
 

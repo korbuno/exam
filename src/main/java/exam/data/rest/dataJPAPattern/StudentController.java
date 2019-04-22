@@ -1,20 +1,22 @@
 package exam.data.rest.dataJPAPattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+import java.util.Optional;
+
+@RepositoryRestController
 public class StudentController {
 
     @Autowired
     StudentRepository repository;
 
-    @GetMapping("/student/{id}")
-    public StudentEntity student(@PathVariable Integer id) {
-        return repository.findById(id).get();
+    @RequestMapping(method = RequestMethod.GET, value = "/student/get/{id}")
+    public @ResponseBody ResponseEntity<StudentEntity> student(@PathVariable Integer id) {
+        Optional<StudentEntity> student = repository.findById(id);
+        return ResponseEntity.of(student);
     }
 
     @DeleteMapping("/student/{id}")
