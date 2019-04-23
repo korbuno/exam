@@ -16,8 +16,7 @@ public class UserEventHandler {
     @Autowired
     PrivilegeRepository privilegeRepository;
 
-    // 왜 안되냐ㅠㅠ
-    // TODO : 유저정보 입력 > 권한 정보 삽입 > 역할 삽입 > 유저정보 저장
+    // 해당 객체를 빈으로 등록하니 해결됬음.
     @HandleBeforeCreate
     public void handleUserEntityBeforeCreate(UserEntity user) {
         List<RoleEntity> defaultRoles = new ArrayList<RoleEntity>();
